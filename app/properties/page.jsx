@@ -7,8 +7,12 @@ import { FaBed } from "react-icons/fa";
 import { MdBathtub } from "react-icons/md";
 import { IoLocationSharp } from "react-icons/io5";
 import { BsCurrencyRupee } from "react-icons/bs";
+import Loading from "@/components/Loading";
 export default function Properties() {
   const [filteredType, setFilteredType] = useState([]);
+  const [activeBtn, setActiveBtn] = useState(false);
+  // const [loading, setLoading] = useState(false);
+  // const [currentPropertyType, setCurrentPropertyType] = useState("all");
 
   const type = PropertiesData.map((property) => {
     return property.propertyType;
@@ -23,7 +27,17 @@ export default function Properties() {
       return property.propertyType === type;
     });
     setFilteredType(filteredData);
+    setActiveBtn(!activeBtn);
   };
+
+  useEffect(() => {
+    setFilteredType(PropertiesData);
+    // const timer = setTimeout(() => {
+    //   setLoading(true);
+    // }, 2000);
+
+    // return () => clearTimeout(timer);
+  }, []);
 
   return (
     <section className={styles.properties_container}>
@@ -32,7 +46,7 @@ export default function Properties() {
           {btnValues?.map((btnValue) => {
             return (
               <button
-                className={styles.btn}
+                className={`${activeBtn} ? ${styles.btn} ${styles.active} :${styles.btn} `}
                 key={btnValue}
                 onClick={() => filterData(btnValue)}
               >
@@ -44,6 +58,15 @@ export default function Properties() {
       </div>
 
       <div className={styles.featured_cards}>
+        {PropertiesData.map((property) => {
+          if (property.propertyType === "home") {
+            <p>Home</p>;
+          } else if (property.propertyType === "interior") {
+            <p>Interior</p>;
+          } else {
+            <p>All</p>;
+          }
+        })}
         {filteredType.map((property) => {
           return (
             <div className={styles.featured_card} key={property.propertyId}>

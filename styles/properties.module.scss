@@ -1,6 +1,18 @@
 .properties_container {
   width: 100%;
   margin: 1rem 0;
+  animation: slideUp 0.5s ease-in-out;
+
+  @keyframes slideUp {
+    0% {
+      transform: translateY(100px);
+      opacity: 0;
+    }
+    100% {
+      transform: translateY(0);
+      opacity: 1;
+    }
+  }
 
   .properties_header {
     .btn_group {
@@ -11,21 +23,26 @@
       padding: 10px;
       max-width: max-content;
       margin: auto auto 1rem auto;
-
-      button {
+      .btn {
         border: none;
         outline: none;
         padding: 5px;
-        border-radius: 5px;
+        // border-radius: 5px;
         // background-color: #b4b2b2;
         font-size: 1rem;
         font-weight: 500;
         cursor: pointer;
+        text-transform: capitalize;
         transition: all 0.3s ease-in-out;
         &:hover {
           background-color: #fff;
           color: #000;
         }
+      }
+
+      .active {
+        background-color: #000;
+        color: #fff;
       }
     }
   }

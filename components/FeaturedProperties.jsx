@@ -25,11 +25,8 @@ export default function FeaturedProperties() {
     <section className={styles.feature_container}>
       {openModal && (
         <BuyModal
-          header="Woohoo you're one step closer to your dream home!"
-          desc="Thank you for showing interest in this property we have informed the
-        owner about your interest and they will be in touch with you shortly.
-        If you have any questions please feel free to contact us at
-        123-456-7890."
+          header="Thank you for choosing us! "
+          desc="Your interest has been shared with the property owner, they will contact you soon!!"
           setOpenModal={setOpenModal}
         />
       )}

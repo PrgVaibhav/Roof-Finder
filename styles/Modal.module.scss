@@ -9,24 +9,25 @@
   width: 100%;
   background: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8));
   z-index: 100;
-  padding: 10px;
   .modal {
     max-width: 400px;
     margin: auto;
     padding: 10px;
     background-color: white;
+    box-shadow: rgba(2555, 255, 2555, 0.6) 0px 3px 8px;
+    font-family: var(--body-font);
     h1 {
       font-size: 2rem;
-      margin-bottom: 1rem;
+      margin-bottom: 0.6rem;
       color: black;
+      text-align: center;
     }
     p {
-      font-size: 1.1rem;
-      margin-bottom: 1rem;
+      font-size: 1rem;
+      margin-bottom: 0.6rem;
       line-height: 25px;
     }
     .modal_btn {
-      margin-top: 1rem;
       padding: 0.5rem 1rem;
       border: none;
       border-radius: 5px;
