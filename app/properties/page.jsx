@@ -9,10 +9,10 @@ import { IoLocationSharp } from "react-icons/io5";
 import { BsCurrencyRupee } from "react-icons/bs";
 import Loading from "@/components/Loading";
 export default function Properties() {
-  const [filteredType, setFilteredType] = useState([]);
-  const [activeBtn, setActiveBtn] = useState(false);
+  const [filteredType, setFilteredType] = useState(PropertiesData);
+  const [activeBtn, setActiveBtn] = useState(null);
   // const [loading, setLoading] = useState(false);
-  // const [currentPropertyType, setCurrentPropertyType] = useState("all");
+  const [currentPropertyType, setCurrentPropertyType] = useState("all");
 
   const type = PropertiesData.map((property) => {
     return property.propertyType;
@@ -27,26 +27,20 @@ export default function Properties() {
       return property.propertyType === type;
     });
     setFilteredType(filteredData);
-    setActiveBtn(!activeBtn);
+    setActiveBtn((current) => !current);
+    setCurrentPropertyType(type);
   };
-
-  useEffect(() => {
-    setFilteredType(PropertiesData);
-    // const timer = setTimeout(() => {
-    //   setLoading(true);
-    // }, 2000);
-
-    // return () => clearTimeout(timer);
-  }, []);
 
   return (
     <section className={styles.properties_container}>
       <div className={styles.properties_header}>
         <div className={styles.btn_group}>
-          {btnValues?.map((btnValue) => {
+          {btnValues.map((btnValue) => {
             return (
               <button
-                className={`${activeBtn} ? ${styles.btn} ${styles.active} :${styles.btn} `}
+                className={`${
+                  activeBtn ? `${styles.active} ${styles.btn}` : styles.btn
+                } `}
                 key={btnValue}
                 onClick={() => filterData(btnValue)}
               >
@@ -57,16 +51,8 @@ export default function Properties() {
         </div>
       </div>
 
+      <p className={styles.property_type}>{currentPropertyType}</p>
       <div className={styles.featured_cards}>
-        {PropertiesData.map((property) => {
-          if (property.propertyType === "home") {
-            <p>Home</p>;
-          } else if (property.propertyType === "interior") {
-            <p>Interior</p>;
-          } else {
-            <p>All</p>;
-          }
-        })}
         {filteredType.map((property) => {
           return (
             <div className={styles.featured_card} key={property.propertyId}>

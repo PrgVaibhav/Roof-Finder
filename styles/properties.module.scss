@@ -1,8 +1,7 @@
 .properties_container {
   width: 100%;
-  margin: 1rem 0;
   animation: slideUp 0.5s ease-in-out;
-
+  background: rgb(241, 236, 236);
   @keyframes slideUp {
     0% {
       transform: translateY(100px);
@@ -14,21 +13,31 @@
     }
   }
 
+  .property_type {
+    font-size: 1.2rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+    letter-spacing: 1px;
+    text-transform: capitalize;
+    text-align: center;
+  }
+
   .properties_header {
     .btn_group {
       display: flex;
       justify-content: center;
       align-items: center;
-      background: cadetblue;
-      padding: 10px;
-      max-width: max-content;
-      margin: auto auto 1rem auto;
+      // max-width: max-content;
+      margin: 1rem auto;
+
+      // margin: auto auto 1rem auto;
       .btn {
         border: none;
         outline: none;
-        padding: 5px;
-        // border-radius: 5px;
-        // background-color: #b4b2b2;
+        padding: 15px;
+        border-top-left-radius: 15px;
+        border-bottom-left-radius: 15px;
+        background-color: darkkhaki;
         font-size: 1rem;
         font-weight: 500;
         cursor: pointer;
@@ -38,8 +47,14 @@
           background-color: #fff;
           color: #000;
         }
-      }
 
+        &:last-child {
+          border-top-left-radius: 0px;
+          border-bottom-left-radius: 0px;
+          border-top-right-radius: 15px;
+          border-bottom-right-radius: 15px;
+        }
+      }
       .active {
         background-color: #000;
         color: #fff;
@@ -54,6 +69,18 @@
     flex-wrap: wrap;
     gap: 1rem;
     margin: auto;
+    animation: slideUp 0.5s ease-in-out;
+
+    @keyframes slideUp {
+      0% {
+        transform: translateY(100px);
+        opacity: 0;
+      }
+      100% {
+        transform: translateY(0);
+        opacity: 1;
+      }
+    }
 
     @media screen and (max-width: 768px) {
       flex-direction: column;
